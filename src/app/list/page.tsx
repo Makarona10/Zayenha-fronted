@@ -6,7 +6,7 @@ import { products } from "@/app/data";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSceleton";
 import { useSearchParams } from "next/navigation";
-import PaginationBar, { PaginationDemo } from "@/components/Pagination";
+import PaginationBar from "@/components/Pagination";
 
 const options = [
   { id: 1, name: "فازات" },
@@ -112,12 +112,12 @@ const ListPage = () => {
         </div>
         <div className="w-full flex justify-center">
           <Suspense fallback={<ProductCardSkeleton count={10} />}>
-            <ProductList products={products} />
+            <ProductList load_more={false} api="" products={products} />
           </Suspense>
         </div>
       </div>
       <div className="mt-16 w-full flex justify-center">
-        <PaginationBar />
+        <PaginationBar total={10} />
       </div>
     </div>
   );
