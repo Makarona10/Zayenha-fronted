@@ -1,6 +1,12 @@
+"use client";
 import FilterList from "@/components/product/Filter";
 import ProductList from "@/components/product/ProductList";
 import Image from "next/image";
+import { products } from "@/app/data";
+import { Suspense } from "react";
+import ProductCardSkeleton from "@/components/skeletons/ProductCardSceleton";
+import { useSearchParams } from "next/navigation";
+import PaginationBar, { PaginationDemo } from "@/components/Pagination";
 
 const options = [
   { id: 1, name: "فازات" },
@@ -44,6 +50,8 @@ const label4 = "الترتيب";
 const q_param4 = "order";
 
 const ListPage = () => {
+  const searchParams = useSearchParams();
+
   return (
     <div className="relative ">
       {/* Campaign */}
@@ -67,7 +75,7 @@ const ListPage = () => {
       </div>
       <div className="flex flex-col gap-y-16 px-4 md:px-20 xl:px-32 2xl:px-64">
         {/* Filter section */}
-        <div className="flex flex-wrap md:gap-5 gap-3 mt-12">
+        <div className="flex flex-wrap items-end md:gap-5 gap-3 mt-12">
           <FilterList
             placeholder="إختر النوع"
             label={label}
@@ -98,11 +106,18 @@ const ListPage = () => {
             options={options3}
             q_param={q_param3}
           />
-          {/* <FilterList label={label2} options={options2} q_param={q_param2} /> */}
+          <button className="bg-primary-500 px-4 py-2 text-white h-fit rounded-full">
+            بحث
+          </button>
         </div>
         <div className="w-full flex justify-center">
-          <ProductList />
+          <Suspense fallback={<ProductCardSkeleton count={10} />}>
+            <ProductList products={products} />
+          </Suspense>
         </div>
+      </div>
+      <div className="mt-16 w-full flex justify-center">
+        <PaginationBar />
       </div>
     </div>
   );

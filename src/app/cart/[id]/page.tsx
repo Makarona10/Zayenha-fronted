@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 
 export default function CartPage() {
+  const router = useRouter();
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -155,10 +157,16 @@ export default function CartPage() {
               {/*   <span>${total.toFixed(2)}</span> */}
               {/* </div> */}
             </div>
-            <button className="w-full mt-6 bg-primary-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-primary-600 transition">
+            <button
+              onClick={() => router.push("/checkout/card")}
+              className="w-full mt-6 bg-primary-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-primary-600 transition"
+            >
               إدفع أونلاين
             </button>
-            <button className="w-full mt-2 bg-gray-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-gray-600 transition">
+            <button
+              onClick={() => router.push("/checkout/cash-on-delivery")}
+              className="w-full mt-2 bg-gray-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-gray-600 transition"
+            >
               إدفع نقدي عند الاستلام
             </button>
           </div>
