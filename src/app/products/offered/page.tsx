@@ -12,7 +12,7 @@ const OfferedProducts = () => {
         HERE THE OFFER BANNER WILL BE
       </div>
       <Suspense fallback={<ProductCardSkeleton count={10} />}>
-        <ProductList products={products} />
+        <ProductList api="" load_more={false} products={products} />
       </Suspense>
     </div>
   );

@@ -13,7 +13,7 @@ const HomePage = async () => {
       <div className="flex flex-col gap-y-10 lg:mt-24 mt-12 2xl:px-64 xl:px-52 lg:px-32 px-10">
         <h1 className="text-3xl font-bold mb-8 ">المنتجات المميزة</h1>
         <Suspense fallback={<ProductCardSkeleton count={10} />}>
-          <ProductList products={products} />
+          <ProductList load_more={false} api="" products={products} />
         </Suspense>
       </div>
       <div className="lg:mt-24 mt-12 2xl:px-64 xl:px-52 lg:px-32 px-10">
@@ -26,7 +26,7 @@ const HomePage = async () => {
       <div className="flex flex-col gap-y-10 lg:mt-24 mt-12 2xl:px-64 xl:px-52 lg:px-32 px-10">
         <h1 className="text-3xl font-bold mb-8 ">أحدث المنتجات</h1>
         <Suspense fallback={<ProductCardSkeleton count={10} />}>
-          <ProductList products={products} />
+          <ProductList load_more={false} api="" products={products} />
         </Suspense>
       </div>
     </div>

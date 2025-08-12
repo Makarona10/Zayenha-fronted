@@ -1,7 +1,6 @@
 import { products } from "@/app/data";
 import ProductList from "@/components/product/ProductList";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSceleton";
-import Image from "next/image";
 import { Suspense } from "react";
 
 const RecentProducts = () => {
@@ -12,7 +11,7 @@ const RecentProducts = () => {
         HERE THE RECENT OR WHATEVER BANNER WILL BE
       </div>
       <Suspense fallback={<ProductCardSkeleton count={10} />}>
-        <ProductList products={products} />
+        <ProductList load_more={false} api="" products={products} />
       </Suspense>
     </div>
   );
