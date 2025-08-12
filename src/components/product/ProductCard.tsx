@@ -1,23 +1,29 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { FaHeart } from "react-icons/fa";
 
 interface Product {
-  image: string;
+  id: string;
+  main_image: string;
+  second_image: string;
   name: string;
-  description: string;
-  price: number;
-  originalPrice: number;
+  description?: string;
+  price?: number;
+  offer_price?: number;
   isFavorite?: boolean;
 }
 
 const ProductCard = (product: Product) => {
+  const handle_favourite = () => {};
+
   return (
     <div className="w-full bg-white rounded-lg transform transition-transform ">
       <div className="w-full">
         <div className="relative w-full aspect-[4/5] overflow-hidden">
           <div className="absolute top-2 left-2 z-20">
             <button
+              onClick={() => handle_favourite()}
               className={`${
                 product.isFavorite
                   ? "text-red-500 hover:text-gray-500"
@@ -30,7 +36,7 @@ const ProductCard = (product: Product) => {
           </div>
           <Link href="">
             <Image
-              src={product.image}
+              src={product.main_image}
               alt={product.name}
               fill
               sizes=""
@@ -56,11 +62,13 @@ const ProductCard = (product: Product) => {
           </p>
           <div className="flex items-center justify-between w-full">
             <span className="md:text-sm text-xs font-bold text-gray-900">
-              {product.price} LE
+              {product.offer_price || product.price} LE
             </span>
-            <span className="line-through md:text-sm text-xs text-gray-500 px-2">
-              {product.originalPrice} LE
-            </span>
+            {product.price && (
+              <span className="line-through md:text-sm text-xs text-gray-500 px-2">
+                {product.price} LE
+              </span>
+            )}
           </div>
           <div className="flex flex-nowrap justify-between w-full">
             <button

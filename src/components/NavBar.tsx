@@ -11,25 +11,33 @@ interface LinkType {
 
 const links: LinkType[] = [
   { name: "الرئيسية", ref: "/" },
-  { name: "المنتجات", ref: "/products" },
-  { name: "العروض", ref: "/offers" },
-  { name: "حولنا", ref: "/about" },
-  { name: "اتصل بنا", ref: "/contact" },
+  // { name: "المنتجات", ref: "/products/popular" },
+  { name: "آخر المنتجات", ref: "/products/recents" },
+  { name: "العروض", ref: "/products/offered" },
+  // { name: "حولنا", ref: "/about" },
+  { name: "اتصل بنا", ref: "/contact-us" },
 ];
 
 const NavBar = () => {
   return (
-    <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 font-medium bg-white shadow-md flex items-center gap-16">
+    <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 font-medium bg-white shadow-sm flex items-center gap-16">
       {/* Mobile */}
-      <div className="flex w-full md:hidden items-center gap-16">
+      <div className="relative flex w-full md:hidden items-center sm:gap-16 gap-6">
         <Link
           href="/"
-          className="flex flex-1 flex-nowrap items-center gap-2 text-2xl font-bold text-gray-800 pl-4 md:pl-0"
+          className="flex flex-1 flex-nowrap items-center gap-2 text-2xl font-bold text-gray-800 "
         >
           <Image src="/logo.png" alt="Logo" width={30} height={30} />
           <div className="text-2xl tracking-wide text-primary-600">زينها</div>
         </Link>
-        <NavIcons />
+        <button className="rounded-full bg-gray-100 p-2">
+          <Image alt="search" src={"/search.png"} width={20} height={20} />
+        </button>
+        <div className="hidden items-center absolute top-20 z-30 shadow-lg rounded-2xl">
+          <div>x</div>
+          <SearchBar />
+        </div>
+        {/* <NavIcons /> */}
         <Menu />
       </div>
       {/* Desktop */}

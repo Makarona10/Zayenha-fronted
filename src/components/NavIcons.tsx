@@ -52,6 +52,42 @@ const NavIcons = () => {
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
       {/* Profile */}
+
+      {/* Notifications */}
+      {/* <div className="relative"> */}
+      {/*   <Image */}
+      {/*     src="/notification.png" */}
+      {/*     alt="" */}
+      {/*     width={22} */}
+      {/*     height={22} */}
+      {/*     className="cursor-pointer" */}
+      {/*     onClick={(e) => toggleMenu(e, notificationRef)} */}
+      {/*   /> */}
+      {/*   <div */}
+      {/*     ref={notificationRef} */}
+      {/*     className="absolute hidden top-14 right-0 bg-white shadow-lg rounded-lg p-4 w-64 z-20" */}
+      {/*   > */}
+      {/*     <p className="text-sm text-gray-600">لا توجد إشعارات حالياً</p> */}
+      {/*   </div> */}
+      {/* </div> */}
+
+      {/* Cart */}
+      <div className="md:block hidden relative min-w-[22px] min-h-[22px]">
+        <Image
+          src="/cart.png"
+          alt=""
+          width={22}
+          height={22}
+          className="cursor-pointer"
+          onClick={(e) => toggleMenu(e, cartRef)}
+        />
+        <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+          1
+        </div>
+        <div ref={cartRef} className="hidden">
+          <CartModal />
+        </div>
+      </div>
       <div className="relative">
         <Image
           src="/profile.png"
@@ -74,8 +110,8 @@ const NavIcons = () => {
           <ul className="space-y-2">
             <li>
               <Link
-                href="/profile"
-                className="text-gray-800 hover:text-rose-600"
+                href="/user/profile"
+                className="text-gray-800 hover:text-primary-600"
               >
                 الملف الشخصي
               </Link>
@@ -83,64 +119,28 @@ const NavIcons = () => {
             <li>
               <Link
                 href="/orders/userid"
-                className="text-gray-800 hover:text-rose-600"
+                className="text-gray-800 hover:text-primary-600"
               >
                 الطلبات
               </Link>
             </li>
-            <li>
-              <Link
-                href="/settings"
-                className="text-gray-800 hover:text-blue-600"
-              >
-                الإعدادات
-              </Link>
-            </li>
+            {/* <li> */}
+            {/*   <Link */}
+            {/*     href="/settings" */}
+            {/*     className="text-gray-800 hover:text-primary-600" */}
+            {/*   > */}
+            {/*     الإعدادات */}
+            {/*   </Link> */}
+            {/* </li> */}
             <li>
               <Link
                 href="/logout"
-                className="text-gray-800 hover:text-blue-600"
+                className="text-gray-800 hover:text-primary-600"
               >
                 تسجيل الخروج
               </Link>
             </li>
           </ul>
-        </div>
-      </div>
-
-      {/* Notifications */}
-      <div className="relative">
-        <Image
-          src="/notification.png"
-          alt=""
-          width={22}
-          height={22}
-          className="cursor-pointer"
-          onClick={(e) => toggleMenu(e, notificationRef)}
-        />
-        <div
-          ref={notificationRef}
-          className="absolute hidden top-14 right-0 bg-white shadow-lg rounded-lg p-4 w-64 z-20"
-        >
-          <p className="text-sm text-gray-600">لا توجد إشعارات حالياً</p>
-        </div>
-      </div>
-
-      {/* Cart */}
-      <div className="relative min-w-[22px] min-h-[22px]">
-        <Image
-          src="/cart.png"
-          alt=""
-          width={22}
-          height={22}
-          className="cursor-pointer"
-          onClick={(e) => toggleMenu(e, cartRef)}
-        />
-        <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-          1
-        </div>
-        <div ref={cartRef} className="hidden">
-          <CartModal />
         </div>
       </div>
     </div>

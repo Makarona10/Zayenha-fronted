@@ -83,14 +83,16 @@ const CartModal = () => {
               عادة ما يتم تسليم الطلبات في غضون 5-7 أيام عمل.
             </p>
             <div className="flex gap-4 text-sm">
-              <button className="w-full bg-primary-400 text-white py-2 rounded-md hover:bg-primary-500 transition duration-200">
-                إتمام الطلب
-              </button>
-              <Link href="cart/userid" className="w-full">
-                <button className="w-full bg-gray-200 text-gray-800 py-2 rounded-md hover:bg-gray-300 transition duration-200">
-                  فتح العربة
+              <Link href="/cart/userid" className="w-full">
+                <button className="w-full bg-primary-400 text-white py-2 rounded-md hover:bg-primary-500 transition duration-200">
+                  إتمام الطلب
                 </button>
               </Link>
+              {/* <Link href="/cart/userid" className="w-full"> */}
+              {/*   <button className="w-full bg-gray-200 text-gray-800 py-2 rounded-md hover:bg-gray-300 transition duration-200"> */}
+              {/*     فتح العربة */}
+              {/*   </button> */}
+              {/* </Link> */}
             </div>
           </div>
         </div>
