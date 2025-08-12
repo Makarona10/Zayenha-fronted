@@ -1,12 +1,13 @@
-"use client";
 import FilterList from "@/components/product/Filter";
 import ProductList from "@/components/product/ProductList";
 import Image from "next/image";
 import { products } from "@/app/data";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSceleton";
-import { useSearchParams } from "next/navigation";
-import PaginationBar from "@/components/Pagination";
+import dynamic from "next/dynamic";
+const PaginationBar = dynamic(() => import("@/components/Pagination"), {
+  ssr: false,
+});
 
 const options = [
   { id: 1, name: "فازات" },
@@ -50,8 +51,6 @@ const label4 = "الترتيب";
 const q_param4 = "order";
 
 const ListPage = () => {
-  const searchParams = useSearchParams();
-
   return (
     <div className="relative ">
       {/* Campaign */}
@@ -76,36 +75,38 @@ const ListPage = () => {
       <div className="flex flex-col gap-y-16 px-4 md:px-20 xl:px-32 2xl:px-64">
         {/* Filter section */}
         <div className="flex flex-wrap items-end md:gap-5 gap-3 mt-12">
-          <FilterList
-            placeholder="إختر النوع"
-            label={label}
-            options={options}
-            q_param={q_param}
-          />
-          <FilterList
-            placeholder="حدد الميزانية"
-            label={label2}
-            options={options2}
-            q_param={q_param2}
-          />
-          <FilterList
-            placeholder="إختر الخامة"
-            label={label3}
-            options={options3}
-            q_param={q_param3}
-          />
-          <FilterList
-            placeholder="الترتيب"
-            label={label4}
-            options={options4}
-            q_param={q_param4}
-          />
-          <FilterList
-            placeholder="إختر الخامة"
-            label={label3}
-            options={options3}
-            q_param={q_param3}
-          />
+          <Suspense fallback={<>Filters loading ...</>}>
+            <FilterList
+              placeholder="إختر النوع"
+              label={label}
+              options={options}
+              q_param={q_param}
+            />
+            <FilterList
+              placeholder="حدد الميزانية"
+              label={label2}
+              options={options2}
+              q_param={q_param2}
+            />
+            <FilterList
+              placeholder="إختر الخامة"
+              label={label3}
+              options={options3}
+              q_param={q_param3}
+            />
+            <FilterList
+              placeholder="الترتيب"
+              label={label4}
+              options={options4}
+              q_param={q_param4}
+            />
+            <FilterList
+              placeholder="إختر الخامة"
+              label={label3}
+              options={options3}
+              q_param={q_param3}
+            />
+          </Suspense>
           <button className="bg-primary-500 px-4 py-2 text-white h-fit rounded-full">
             بحث
           </button>
