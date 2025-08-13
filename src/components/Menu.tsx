@@ -12,9 +12,10 @@ const options: Option[] = [
   { name: "الرئيسية", href: "/" },
   { name: "آخر المنتجات", href: "/products/recents" },
   { name: "العروض", href: "/products/offered" },
+  { name: "الطلبات", href: "/user/orders/userid" },
+  { name: "العربة (1)", href: "/cart/userid" },
   { name: "الملف الشخصي", href: "/user/profile" },
   { name: "اتصل بنا", href: "/contact-us" },
-  { name: "العربة (1)", href: "/cart/userid" },
   { name: "تسجيل الخروج", href: "/logout" },
 ];
 

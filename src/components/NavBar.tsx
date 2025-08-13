@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Menu from "./Menu";
 import Image from "next/image";
@@ -30,12 +31,33 @@ const NavBar = () => {
           <Image src="/logo.png" alt="Logo" width={30} height={30} />
           <div className="text-2xl tracking-wide text-primary-600">زينها</div>
         </Link>
-        <button className="rounded-full bg-gray-100 p-2">
+        <button
+          className="rounded-full bg-gray-100 p-2"
+          onClick={() => {
+            const bar = document.getElementById("sbar");
+            if (bar) {
+              bar.style.transform = "translateY(0px)";
+            }
+          }}
+        >
           <Image alt="search" src={"/search.png"} width={20} height={20} />
         </button>
-        <div className="hidden items-center absolute top-20 z-30 shadow-lg rounded-2xl">
-          <div>x</div>
+        <div
+          id="sbar"
+          className="flex items-center gap-3 z-30 transform duration-300 absolute top-16 -translate-y-52 w-full"
+        >
           <SearchBar />
+          <button
+            onClick={() => {
+              const bar = document.getElementById("sbar");
+              if (bar) {
+                bar.style.transform = "translateY(-10rem)";
+              }
+            }}
+            className="py-2 px-4 text-sm bg-red-500 rounded-full text-white"
+          >
+            x
+          </button>
         </div>
         {/* <NavIcons /> */}
         <Menu />

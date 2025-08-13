@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
@@ -13,14 +13,6 @@ export default function PaginationBar({ total = 10 }: Props) {
 
   const initialPage = Number(searchParams.get("page")) || 1;
   const [page, setPage] = useState(initialPage);
-
-  const handlePrev = () => {
-    setPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const handleNext = () => {
-    setPage((prev) => prev + 1);
-  };
 
   const updateParam = (newpage: number) => {
     if (newpage < 1) return;

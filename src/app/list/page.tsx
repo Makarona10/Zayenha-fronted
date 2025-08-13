@@ -118,9 +118,7 @@ const ListPage = () => {
         </div>
       </div>
       <div className="mt-16 w-full flex justify-center">
-        <Suspense fallback={<>loading..</>}>
-          <PaginationBar total={10} />
-        </Suspense>
+        <PaginationBar total={10} />
       </div>
     </div>
   );
