@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const SearchBar = () => {
+  const t = useTranslations("Navbar");
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,8 +26,8 @@ const SearchBar = () => {
       <input
         type="text"
         name="name"
-        placeholder="ابحث عن منتج..."
-        className="flex-1 text-sm bg-transparent border-0 rounded-lg focus:outline-none focus:ring-0"
+        placeholder={t("search")}
+        className="flex-1 indent-5 text-sm bg-transparent border-0 rounded-lg focus:outline-none focus:ring-0"
       />
       <button type="submit" className="">
         <Image src="/search.png" alt="Search" width={16} height={16} />

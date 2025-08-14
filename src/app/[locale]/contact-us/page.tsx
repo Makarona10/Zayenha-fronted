@@ -17,8 +17,6 @@ export default function ContactUsPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact Form Submitted:", form);
-    alert("تم إرسال رسالتك بنجاح!");
     setForm({ email: "", message: "" });
   };
 

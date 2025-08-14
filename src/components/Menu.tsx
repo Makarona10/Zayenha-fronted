@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
@@ -8,20 +9,21 @@ interface Option {
   href: string;
 }
 
-const options: Option[] = [
-  { name: "الرئيسية", href: "/" },
-  { name: "آخر المنتجات", href: "/products/recents" },
-  { name: "العروض", href: "/products/offered" },
-  { name: "الطلبات", href: "/orders/userid" },
-  { name: "العربة (1)", href: "/cart/userid" },
-  { name: "الملف الشخصي", href: "/user/profile" },
-  { name: "اتصل بنا", href: "/contact-us" },
-  { name: "تسجيل الخروج", href: "/logout" },
-];
-
 const Menu = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Navbar");
+
+  const options: Option[] = [
+    { name: t("home"), href: "/" },
+    { name: t("recent"), href: "/products/recents" },
+    { name: t("offers"), href: "/products/offered" },
+    { name: t("profile.orders"), href: "/orders/userid" },
+    { name: t("menu.cart"), href: "/cart/userid" },
+    { name: t("profile.profile"), href: "/user/profile" },
+    { name: t("contact"), href: "/contact-us" },
+    { name: t("profile.logout"), href: "/logout" },
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -70,7 +72,7 @@ const Menu = () => {
             onClick={() => setOpen(false)}
             className="mb-6 text-red-500 hover:text-red-600"
           >
-            ✕ إغلاق
+            ✕ {t("menu.close")}
           </button>
           <ul className="space-y-4 mt-5">
             {options.map((option, index) => (

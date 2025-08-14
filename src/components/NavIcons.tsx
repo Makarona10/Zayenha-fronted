@@ -4,13 +4,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import CartModal from "./CartModal";
+import { useTranslations } from "next-intl";
 
 const NavIcons = () => {
   const router = useRouter();
-
   const profileRef = useRef<HTMLDivElement>(null);
   const notificationRef = useRef<HTMLDivElement>(null);
   const cartRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Navbar");
 
   const isLoggedIn = true;
 
@@ -113,7 +114,7 @@ const NavIcons = () => {
                 href="/user/profile"
                 className="text-gray-800 hover:text-primary-600"
               >
-                الملف الشخصي
+                {t("profile.profile")}
               </Link>
             </li>
             <li>
@@ -121,7 +122,7 @@ const NavIcons = () => {
                 href="/orders/userid"
                 className="text-gray-800 hover:text-primary-600"
               >
-                الطلبات
+                {t("profile.orders")}
               </Link>
             </li>
             {/* <li> */}
@@ -137,7 +138,7 @@ const NavIcons = () => {
                 href="/logout"
                 className="text-gray-800 hover:text-primary-600"
               >
-                تسجيل الخروج
+                {t("profile.logout")}
               </Link>
             </li>
           </ul>

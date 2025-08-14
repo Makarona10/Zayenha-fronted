@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 const Add = () => {
   const [quantity, setQuantity] = useState<number>(1);
+  const t = useTranslations("prod_page");
 
   const stock = 5;
 
@@ -18,7 +20,7 @@ const Add = () => {
 
   return (
     <div className="flex flex-col gap-4 mt-2">
-      <h4 className="font-medium">حدد الكمية</h4>
+      <h4 className="font-medium">{t("quantity")}</h4>
       <div className="flex justify-between ">
         <div className="flex items-center gap-4">
           <div className="bg-gray-100 py-2 rounded-3xl flex items-center justify-between w-32">
@@ -37,9 +39,12 @@ const Add = () => {
             </button>
           </div>
           <div className="text-xs">
-            يتبقى فقط{" "}
-            <span className="text-red-600 font-bold">{stock} قطع</span> <br />
-            لا يفوتك!
+            {t("only")}{" "}
+            <span className="text-red-600 font-bold">
+              {stock} {t("pl")}
+            </span>{" "}
+            <br />
+            {t("dm")}!
           </div>
         </div>
         <button
@@ -47,7 +52,7 @@ const Add = () => {
         py-2 px-4 hover:text-white hover:bg-primary-400
         disabled:cursor-not-allowed disabled:bg-primary-400-30 disabled:text-white`}
         >
-          أضف إلى العربة
+          {t("add")}
         </button>
       </div>
     </div>

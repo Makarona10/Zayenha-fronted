@@ -41,7 +41,6 @@ export default function CashOnDeliveryPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(form);
     // alert("تم تأكيد الطلب بنجاح!");
   };
 

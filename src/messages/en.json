@@ -1,0 +1,71 @@
+{
+  "Home": {
+    "featured": "",
+    "categories": "",
+    "recent": ""
+  },
+  "Navbar": {
+    "home": "Home",
+    "recent": "Just arrived",
+    "offers": "offers",
+    "contact": "contact us",
+    "profile": {
+      "profile": "your account",
+      "orders": "orders history",
+      "logout": "logout"
+    },
+    "search": "Search ...",
+    "cart": {},
+    "menu": {
+      "cart": "cart",
+      "close": "close"
+    }
+  },
+  "prod_page": {
+    "color": "color",
+    "size": "size",
+    "quantity": "quantity",
+    "about": "about product",
+    "return_policy": {
+      "head": "return policy",
+      "content": "Modern canvas wall art for living room, waterproof, non-fading, durable and dustproof, fully compliant with standards. Modern canvas wall art for living room, waterproof, non-fading, durable and dustproof, fully compliant with standards. Modern canvas wall art for living room, waterproof, non-fading, durable and dustproof, fully compliant with standards."
+    },
+    "add": "add to cart",
+    "only": "only",
+    "pl": "pieces left",
+    "dm": "Don't miss"
+  },
+  "footer": {
+    "sub": {
+      "head": "Subscribe",
+      "follow": "Stay updated with the latest news, products, offers, and more from Zeenha",
+      "email": {
+        "ph": "Email address",
+        "btn": "Join us"
+      },
+      "pay": "Secure payment methods"
+    },
+    "help": {
+      "head": "Help",
+      "customer service": "Customer Service",
+      "our account": "Our Account",
+      "p&p": "Privacy & Policy"
+    },
+    "shopping": {
+      "head": "Shopping",
+      "new arrivals": "New Arrivals",
+      "offers": "Offers",
+      "home": "Home",
+      "trends": "Trends"
+    },
+    "company": {
+      "head": "Company",
+      "about": "About Us",
+      "devs": "Developers",
+      "contact": "Contact Us"
+    },
+    "us": {
+      "address": ""
+    }
+  }
+}
