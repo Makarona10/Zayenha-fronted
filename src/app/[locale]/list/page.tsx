@@ -1,3 +1,5 @@
+"use client";
+
 import FilterList from "@/components/product/Filter";
 import ProductList from "@/components/product/ProductList";
 import Image from "next/image";
@@ -5,62 +7,53 @@ import { products } from "@/app/data";
 import { Suspense } from "react";
 import ProductCardSkeleton from "@/components/skeletons/ProductCardSceleton";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
+
 const PaginationBar = dynamic(() => import("@/components/Pagination"), {
   ssr: false,
 });
 
-const options = [
-  { id: 1, name: "فازات" },
-  { id: 2, name: "ساعات حائط" },
-  { id: 3, name: "ساعات مكتبية" },
-  { id: 4, name: "لوح زيت" },
-  { id: 5, name: "أنتيكات" },
-  { id: 6, name: "إكسسوارات" },
-];
-const label = "النوع";
-const q_param = "type";
-
-const options2 = [
-  { id: 1, name: "من 0 إلى 200 جنيه" },
-  { id: 2, name: "من 200 إلى 450 جنيه" },
-  { id: 3, name: "من 450 إلى 1000 جنيه" },
-  { id: 4, name: "من 1000 جنيه إلى 2500 جنيه" },
-  { id: 5, name: "أكثر من 2500 جنيه" },
-];
-const label2 = "السعر";
-const q_param2 = "p";
-
-const options3 = [
-  { id: 1, name: "البلاسيتك" },
-  { id: 2, name: "الذهب" },
-  { id: 3, name: "الفضة" },
-  { id: 4, name: "السيراميك" },
-  { id: 5, name: "الزجاج" },
-  { id: 6, name: "أخرى" },
-];
-const label3 = "مادة التصنيع";
-const q_param3 = "material";
-
-const options4 = [
-  { id: 1, name: "بالسعر (تصاعديا)" },
-  { id: 2, name: "بالسعر (تنازليا)" },
-  { id: 3, name: "الأجدد أولا" },
-  { id: 4, name: "الأقدم أولا" },
-];
-const label4 = "الترتيب";
-const q_param4 = "order";
-
 const ListPage = () => {
+  const t = useTranslations("searchpage");
+
+  const typeOptions = t
+    .raw("filters.type.options")
+    .map((name: string, i: number) => ({
+      id: i + 1,
+      name,
+    }));
+
+  const priceOptions = t
+    .raw("filters.price.options")
+    .map((name: string, i: number) => ({
+      id: i + 1,
+      name,
+    }));
+
+  const materialOptions = t
+    .raw("filters.material.options")
+    .map((name: string, i: number) => ({
+      id: i + 1,
+      name,
+    }));
+
+  const orderOptions = t
+    .raw("filters.order.options")
+    .map((name: string, i: number) => ({
+      id: i + 1,
+      name,
+    }));
+
   return (
-    <div className="relative ">
+    <div className="relative">
       {/* Campaign */}
       <div className="bg-primary-100 flex md:flex-row flex-col justify-between md:h-[320px] h-[640px]">
         <div className="md:w-5/12 w-full md:h-full h-1/2 flex flex-col items-center justify-center gap-8 p-8 bg-gradient-to-r from-primary-100 to-primary-100/50">
           <h1 className="text-3xl text-center font-bold leading-[48px] text-gray-700">
-            أحصل على خصم يصل إلى 50% على الزينة المكتبية
+            {t("campaign.title")}
           </h1>
           <button className="rounded-full text-base font-semibold p-3 bg-primary-500 text-white">
-            تسوق الآن
+            {t("campaign.button")}
           </button>
         </div>
         <div className="relative md:w-7/12 w-full md:h-full h-1/2">
@@ -72,51 +65,48 @@ const ListPage = () => {
           />
         </div>
       </div>
+
       <div className="flex flex-col gap-y-16 px-4 md:px-20 xl:px-32 2xl:px-64">
         {/* Filter section */}
         <div className="flex flex-wrap items-end md:gap-5 gap-3 mt-12">
           <Suspense fallback={<>Filters loading ...</>}>
             <FilterList
-              placeholder="إختر النوع"
-              label={label}
-              options={options}
-              q_param={q_param}
+              placeholder={t("filters.type.placeholder")}
+              label={t("filters.type.label")}
+              options={typeOptions}
+              q_param="type"
             />
             <FilterList
-              placeholder="حدد الميزانية"
-              label={label2}
-              options={options2}
-              q_param={q_param2}
+              placeholder={t("filters.price.placeholder")}
+              label={t("filters.price.label")}
+              options={priceOptions}
+              q_param="p"
             />
             <FilterList
-              placeholder="إختر الخامة"
-              label={label3}
-              options={options3}
-              q_param={q_param3}
+              placeholder={t("filters.material.placeholder")}
+              label={t("filters.material.label")}
+              options={materialOptions}
+              q_param="material"
             />
             <FilterList
-              placeholder="الترتيب"
-              label={label4}
-              options={options4}
-              q_param={q_param4}
-            />
-            <FilterList
-              placeholder="إختر الخامة"
-              label={label3}
-              options={options3}
-              q_param={q_param3}
+              placeholder={t("filters.order.placeholder")}
+              label={t("filters.order.label")}
+              options={orderOptions}
+              q_param="order"
             />
           </Suspense>
           <button className="bg-primary-500 px-4 py-2 text-white h-fit rounded-full">
-            بحث
+            {t("searchButton")}
           </button>
         </div>
+
         <div className="w-full flex justify-center">
           <Suspense fallback={<ProductCardSkeleton count={10} />}>
             <ProductList load_more={false} api="" products={products} />
           </Suspense>
         </div>
       </div>
+
       <div className="mt-16 w-full flex justify-center">
         <PaginationBar total={10} />
       </div>

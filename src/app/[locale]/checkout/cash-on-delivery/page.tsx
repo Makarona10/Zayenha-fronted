@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { currency } from "@/currency";
 
 interface CartItem {
   id: number;
@@ -10,13 +12,19 @@ interface CartItem {
 }
 
 export default function CashOnDeliveryPage() {
+  const t = useTranslations("cashOnDelivery");
+  const locale = useLocale();
+  const currentCurrency = currency[locale as keyof typeof currency];
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
     email: "",
-    address: "",
-    city: "cairo",
-    notes: "",
+    city: "",
+    district: "",
+    street: "",
+    buildingAndFloor: "",
+    landmark: "",
   });
 
   const cartItems: CartItem[] = [
@@ -41,26 +49,26 @@ export default function CashOnDeliveryPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // alert("تم تأكيد الطلب بنجاح!");
+    // handle submit logic
   };
 
   return (
     <div className="h-screen flex justify-center p-6">
       <div className="h-fit bg-white shadow-lg rounded-xl p-6 w-full max-w-4xl">
         <h1 className="text-2xl font-bold text-primary-700 mb-6">
-          الدفع عند الاستلام
+          {t("title")}
         </h1>
 
         <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
           {/* Shipping Info */}
           <div className="space-y-4">
             <h2 className="text-lg font-semibold text-primary-600">
-              بيانات الشحن
+              {t("shippingInfo")}
             </h2>
             <input
               type="text"
               name="name"
-              placeholder="الاسم بالكامل"
+              placeholder={t("fullName")}
               value={form.name}
               onChange={handleChange}
               className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
@@ -69,7 +77,7 @@ export default function CashOnDeliveryPage() {
             <input
               type="tel"
               name="phone"
-              placeholder="رقم الموبايل"
+              placeholder={t("phoneNumber")}
               value={form.phone}
               onChange={handleChange}
               className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
@@ -78,7 +86,7 @@ export default function CashOnDeliveryPage() {
             <input
               type="email"
               name="email"
-              placeholder="البريد الإلكتروني (اختياري)"
+              placeholder={t("email")}
               value={form.email}
               onChange={handleChange}
               className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
@@ -87,7 +95,7 @@ export default function CashOnDeliveryPage() {
               htmlFor="city"
               className="block text-sm font-medium text-primary-700 mb-1"
             >
-              المحافظة
+              {t("city")}
             </label>
             <select
               id="city"
@@ -97,21 +105,40 @@ export default function CashOnDeliveryPage() {
               required
               className="border rounded-lg p-3 w-full focus:outline-primary-400"
             >
-              <option value="cairo">القاهرة</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Giza">Giza</option>
             </select>
             <input
               type="text"
-              name="address"
-              placeholder="العنوان بالتفصيل"
-              value={form.address}
+              name="district"
+              placeholder={t("district")}
+              value={form.district}
+              onChange={handleChange}
+              className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
+              required
+            />
+            <input
+              type="text"
+              name="street"
+              placeholder={t("street")}
+              value={form.street}
+              onChange={handleChange}
+              className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
+              required
+            />
+            <input
+              type="text"
+              name="buildingAndFloor"
+              placeholder={t("buildingAndFloor")}
+              value={form.buildingAndFloor}
               onChange={handleChange}
               className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
               required
             />
             <textarea
-              name="notes"
-              placeholder="ملاحظات إضافية"
-              value={form.notes}
+              name="landmark"
+              placeholder={t("landmark")}
+              value={form.landmark}
               onChange={handleChange}
               className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
             />
@@ -120,7 +147,7 @@ export default function CashOnDeliveryPage() {
           {/* Order Summary */}
           <div className="space-y-4">
             <h2 className="text-lg font-semibold text-primary-600">
-              ملخص الطلب
+              {t("orderSummary")}
             </h2>
             <div className="bg-primary-50 p-4 rounded-lg">
               {cartItems.map((item) => (
@@ -131,20 +158,22 @@ export default function CashOnDeliveryPage() {
                   <span>
                     {item.name} × {item.quantity}
                   </span>
-                  <span>{item.price * item.quantity} جنيه</span>
+                  <span>
+                    {item.price * item.quantity} {currentCurrency}
+                  </span>
                 </div>
               ))}
               <div className="flex justify-between font-semibold">
-                <span>سعر المنتجات</span>
-                <span>{totalPrice} جنيه</span>
+                <span>{t("productPrice")}</span>
+                <span>
+                  {totalPrice} {currentCurrency}
+                </span>
               </div>
-              {/* <div className="flex justify-between"> */}
-              {/*   <span>الشحن</span> */}
-              {/*   <span>{shippingCost} جنيه</span> */}
-              {/* </div> */}
               <div className="flex justify-between text-lg font-bold text-primary-700 mt-2">
-                <span>الإجمالي</span>
-                <span>{grandTotal} جنيه</span>
+                <span>{t("total")}</span>
+                <span>
+                  {grandTotal} {currentCurrency}
+                </span>
               </div>
             </div>
 
@@ -152,7 +181,7 @@ export default function CashOnDeliveryPage() {
               type="submit"
               className="bg-primary-400 hover:bg-primary-500 text-white w-full py-3 rounded-lg text-lg font-semibold transition-colors"
             >
-              تأكيد الطلب
+              {t("confirmOrder")}
             </button>
           </div>
         </form>

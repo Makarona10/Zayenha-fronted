@@ -4,34 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-const slides = [
-  {
-    id: 1,
-    image:
-      "https://images.pexels.com/photos/26756094/pexels-photo-26756094.jpeg",
-    title: "تكلفة بسيطة وتصاميم رائعة!",
-    url: "/",
-    bg: "bg-gradient-to-l from-[#c0e7f0] to-[#FFFFFF]",
-    description: "إلحق عروض الصيف من زينها",
-  },
-  {
-    id: 2,
-    image: "https://images.pexels.com/photos/3246665/pexels-photo-3246665.png",
-    title: "لوحات فنية لجدران بيتك",
-    url: "/",
-    bg: "bg-gradient-to-r from-[#decea4] to-[#e0e0e0]",
-    description: "زين بيتك بأجمل اللوحات",
-  },
-  {
-    id: 3,
-    image: "https://images.pexels.com/photos/850360/pexels-photo-850360.jpeg",
-    title: "زينة مكتبية تضفي لمسة جمالية",
-    url: "/",
-    bg: "bg-gradient-to-r from-[#f0f0f0] to-[#e0e0e0]",
-    description: "أضف لمسة من الجمال إلى مكتبك",
-  },
-];
+import { useLocale } from "next-intl";
+import { useTranslations } from "use-intl";
 
 const descriptionVariants = {
   hidden: { opacity: 0, x: -40 },
@@ -49,7 +23,39 @@ const buttonVariants = {
 };
 
 const Slider = () => {
+  const t = useTranslations("slider");
+  const locale = useLocale();
+  const sign = locale == "ar" ? 1 : -1;
   const [current, setCurrent] = useState(0);
+
+  const slides = [
+    {
+      id: 1,
+      image:
+        "https://images.pexels.com/photos/26756094/pexels-photo-26756094.jpeg",
+      title: t("first.desc"),
+      url: "/",
+      bg: "bg-gradient-to-l from-[#c0e7f0] to-[#FFFFFF]",
+      description: t("first.head"),
+    },
+    {
+      id: 2,
+      image:
+        "https://images.pexels.com/photos/3246665/pexels-photo-3246665.png",
+      title: t("second.desc"),
+      url: "/",
+      bg: "bg-gradient-to-r from-[#decea4] to-[#e0e0e0]",
+      description: t("second.head"),
+    },
+    {
+      id: 3,
+      image: "https://images.pexels.com/photos/850360/pexels-photo-850360.jpeg",
+      title: t("third.desc"),
+      url: "/",
+      bg: "bg-gradient-to-r from-[#f0f0f0] to-[#e0e0e0]",
+      description: t("third.head"),
+    },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,7 +68,9 @@ const Slider = () => {
     <div className="h-[calc(100vh-80px)] overflow-hidden">
       <div
         className="w-max h-full flex transition-all duration-1000 ease-in-out"
-        style={{ transform: `translateX(${current * 100}vw)` }}
+        style={{
+          transform: `translateX(${current * 100 * sign}vw)`,
+        }}
       >
         {slides.map((slide) => (
           <div
@@ -100,7 +108,7 @@ const Slider = () => {
                   transition={{ duration: 1, delay: 0.1 }}
                   className="px-4 py-3 text-white bg-black rounded-md"
                 >
-                  استعرض الآن
+                  {t("button")}
                 </motion.button>
               </Link>
             </div>

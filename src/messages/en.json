@@ -6,20 +6,21 @@
   },
   "Navbar": {
     "home": "Home",
-    "recent": "Just arrived",
-    "offers": "offers",
-    "contact": "contact us",
+    "recent": "Just Arrived",
+    "offers": "Offers",
+    "contact": "Contact Us",
     "profile": {
-      "profile": "your account",
-      "orders": "orders history",
-      "logout": "logout"
+      "profile": "Your Account",
+      "orders": "Orders History",
+      "logout": "Logout"
     },
     "search": "Search ...",
     "cart": {},
     "menu": {
       "cart": "cart",
       "close": "close"
-    }
+    },
+    "login": "login"
   },
   "prod_page": {
     "color": "color",
@@ -67,5 +68,176 @@
     "us": {
       "address": ""
     }
+  },
+  "slider": {
+    "first": {
+      "head": "Hot summer sales!",
+      "desc": "Low cost, Amazing designs"
+    },
+    "second": {
+      "head": "Arts for your walls",
+      "desc": "Make your walls look much better"
+    },
+    "third": {
+      "head": "Add a touch of beauty to your desk",
+      "desc": "Elegant desk décor to enhance your space."
+    },
+    "button": "Shop now"
+  },
+  "cartmodal": {
+    "head": "Shopping Cart",
+    "item": {
+      "rmbutton": "Remove",
+      "quantity": "Quantity"
+    },
+    "checkout": "Checkout",
+    "total": "Total",
+    "note": "Orders are usually delivered within 5-7 business days.",
+    "empty": "No items added yet."
+  },
+  "cartpage": {
+    "title": "Your shopping cart",
+    "yourorder": "Your order",
+    "total": "Total amount:",
+    "pay": {
+      "online": "Pay online",
+      "cash": "Pay cash on delivery"
+    }
+  },
+  "cashOnDelivery": {
+    "title": "Cash on Delivery",
+    "shippingInfo": "Shipping Information",
+    "fullName": "Full Name",
+    "phoneNumber": "Mobile Number",
+    "email": "Email (Optional)",
+    "city": "City",
+    "district": "District / Area",
+    "street": "Street Name",
+    "buildingAndFloor": "Building Number & Floor",
+    "landmark": "Landmark or Additional Details",
+    "orderSummary": "Order Summary",
+    "productPrice": "Product Price",
+    "total": "Total",
+    "confirmOrder": "Confirm Order"
+  },
+  "contactus": {
+    "form": {
+      "title": "Contact Us",
+      "email": "Email",
+      "message": "Your Message",
+      "placeholder": {
+        "email": "example@email.com",
+        "message": "Write your message here..."
+      },
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Other Contact Methods",
+      "phone": "+20 100 123 4567",
+      "whatsapp": "Contact via WhatsApp",
+      "email": "support@example.com"
+    }
+  },
+  "searchpage": {
+    "campaign": {
+      "title": "Get up to 50% off on office decorations",
+      "button": "Shop Now"
+    },
+    "filters": {
+      "type": {
+        "label": "Type",
+        "placeholder": "Select type",
+        "options": [
+          "Vases",
+          "Wall Clocks",
+          "Desk Clocks",
+          "Oil Paintings",
+          "Antiques",
+          "Accessories"
+        ]
+      },
+      "price": {
+        "label": "Price",
+        "placeholder": "Select budget",
+        "options": [
+          "From 0 to 200 EGP",
+          "From 200 to 450 EGP",
+          "From 450 to 1000 EGP",
+          "From 1000 EGP to 2500 EGP",
+          "More than 2500 EGP"
+        ]
+      },
+      "material": {
+        "label": "Material",
+        "placeholder": "Select material",
+        "options": ["Plastic", "Gold", "Silver", "Ceramic", "Glass", "Other"]
+      },
+      "order": {
+        "label": "Sort By",
+        "placeholder": "Sort",
+        "options": [
+          "By Price (Ascending)",
+          "By Price (Descending)",
+          "Newest First",
+          "Oldest First"
+        ]
+      }
+    },
+    "searchButton": "Search"
+  },
+  "productCard": {
+    "addToCart": "Add to Cart",
+    "viewProduct": "View Product"
+  },
+  "pagination": {
+    "page": "Page",
+    "prev1": "Back 1",
+    "prev5": "Back 5",
+    "next1": "Forward 1",
+    "next5": "Forward 5"
+  },
+  "profilepage": {
+    "loading": "Loading profile...",
+    "editProfile": "Edit Profile",
+    "stats": {
+      "ordersCount": "Orders Count",
+      "totalAmount": "Total Orders Price",
+      "mostValuableOrder": "Most Valuable Order",
+      "lastOrderDate": "Last Order Date"
+    },
+    "lastAddress": {
+      "title": "Last Order Address"
+    },
+    "ordersHistory": {
+      "title": "Orders History",
+      "orderId": "Order ID",
+      "total": "Total",
+      "date": "Order Date"
+    },
+    "currency": "EGP"
+  },
+  "Login": {
+    "title": "Login",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submitButton": "Sign In",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create one"
+  },
+  "Register": {
+    "title": "Create an Account",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "submitButton": "Register",
+    "haveAccount": "Already have an account?",
+    "login": "Login"
   }
 }

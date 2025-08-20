@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { FaWhatsapp, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 export default function ContactUsPage() {
+  const t = useTranslations("contactus");
   const [form, setForm] = useState({
     email: "",
     message: "",
@@ -25,14 +27,16 @@ export default function ContactUsPage() {
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-4xl p-8 grid md:grid-cols-2 gap-8">
         {/* Contact Form */}
         <div>
-          <h2 className="text-2xl font-bold text-primary-700 mb-6">اتصل بنا</h2>
+          <h2 className="text-2xl font-bold text-primary-700 mb-6">
+            {t("form.title")}
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-primary-700 mb-1"
               >
-                البريد الإلكتروني
+                {t("form.email")}
               </label>
               <input
                 type="email"
@@ -41,7 +45,7 @@ export default function ContactUsPage() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                placeholder="example@email.com"
+                placeholder={t("form.placeholder.email")}
                 className="border rounded-lg p-3 w-full focus:outline-primary-400 outline-none"
               />
             </div>
@@ -51,7 +55,7 @@ export default function ContactUsPage() {
                 htmlFor="message"
                 className="block text-sm font-medium text-primary-700 mb-1"
               >
-                رسالتك
+                {t("form.message")}
               </label>
               <textarea
                 id="message"
@@ -60,7 +64,7 @@ export default function ContactUsPage() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="أكتب رسالتك هنا..."
+                placeholder={t("form.placeholder.message")}
                 className="border rounded-lg p-3 w-full focus:outline-primary-400"
               />
             </div>
@@ -69,7 +73,7 @@ export default function ContactUsPage() {
               type="submit"
               className="bg-primary-400 hover:bg-primary-500 text-white w-full py-3 rounded-lg font-semibold transition-colors"
             >
-              إرسال الرسالة
+              {t("form.submit")}
             </button>
           </form>
         </div>
@@ -77,33 +81,31 @@ export default function ContactUsPage() {
         {/* Contact Info */}
         <div className="bg-primary-100 rounded-xl p-6 flex flex-col justify-center items-center">
           <h3 className="text-xl font-semibold text-primary-800 mb-4">
-            طرق التواصل الأخرى
+            {t("info.title")}
           </h3>
 
           <div className="flex items-center gap-3 mb-4">
             <FaPhoneAlt className="text-primary-600 text-lg" />
             <span className="text-primary-800 text-sm" dir="ltr">
-              +20 100 123 4567
+              {t("info.phone")}
             </span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
             <FaWhatsapp className="text-green-600 text-lg" />
             <a
-              href="https://wa.me/201001234567"
+              href={`https://wa.me/${t("info.phone").replace(/\s/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary-800 hover:text-primary-600 text-sm transition-colors"
             >
-              تواصل عبر واتساب
+              {t("info.whatsapp")}
             </a>
           </div>
 
           <div className="flex items-center gap-3">
             <FaEnvelope className="text-primary-600 text-lg" />
-            <span className="text-primary-800 text-sm">
-              support@example.com
-            </span>
+            <span className="text-primary-800 text-sm">{t("info.email")}</span>
           </div>
         </div>
       </div>

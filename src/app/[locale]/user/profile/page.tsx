@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface Order {
   id: string;
@@ -21,10 +22,10 @@ interface UserProfile {
 }
 
 const UserProfilePage = () => {
+  const t = useTranslations("profilepage");
   const [user, setUser] = useState<UserProfile | null>(null);
 
   useEffect(() => {
-    // Simulate fetch
     setUser({
       name: "ربيع الدسوقي",
       email: "ahmed@exame.com",
@@ -41,7 +42,7 @@ const UserProfilePage = () => {
   }, []);
 
   if (!user) {
-    return <p className="p-8 text-center text-gray-500">Loading profile...</p>;
+    return <p className="p-8 text-center text-gray-500">{t("loading")}</p>;
   }
 
   const ordersCount = user.orders.length;
@@ -62,7 +63,7 @@ const UserProfilePage = () => {
           </div>
           <div className="mt-4 sm:mt-0">
             <button className="px-4 py-2 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition">
-              تعديل الملف الشخصي
+              {t("editProfile")}
             </button>
           </div>
         </div>
@@ -70,21 +71,25 @@ const UserProfilePage = () => {
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-gray-100 rounded-xl p-4 shadow-sm">
-            <p className="text-sm text-gray-500">عدد الطلبات</p>
+            <p className="text-sm text-gray-500">{t("stats.ordersCount")}</p>
             <p className="text-xl font-semibold">{ordersCount}</p>
           </div>
           <div className="bg-gray-100 rounded-xl p-4 shadow-sm">
-            <p className="text-sm text-gray-500">سعر إجمالي الطلبات</p>
-            <p className="text-xl font-semibold">{totalAmount} جنيه</p>
-          </div>
-          <div className="bg-gray-100 rounded-xl p-4 shadow-sm">
-            <p className="text-sm text-gray-500">الطلب الأعلى سعرا</p>
+            <p className="text-sm text-gray-500">{t("stats.totalAmount")}</p>
             <p className="text-xl font-semibold">
-              {mostValuableOrder.total} جنيه
+              {totalAmount} {t("currency")}
             </p>
           </div>
           <div className="bg-gray-100 rounded-xl p-4 shadow-sm">
-            <p className="text-sm text-gray-500">تاريخ أخر طلب</p>
+            <p className="text-sm text-gray-500">
+              {t("stats.mostValuableOrder")}
+            </p>
+            <p className="text-xl font-semibold">
+              {mostValuableOrder.total} {t("currency")}
+            </p>
+          </div>
+          <div className="bg-gray-100 rounded-xl p-4 shadow-sm">
+            <p className="text-sm text-gray-500">{t("stats.lastOrderDate")}</p>
             <p className="text-xl font-semibold">{lastOrderDate}</p>
           </div>
         </div>
@@ -92,7 +97,7 @@ const UserProfilePage = () => {
         {/* Last Address */}
         <div className="bg-gray-100 rounded-xl p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-800 mb-2">
-            عنوان أخر طلب
+            {t("lastAddress.title")}
           </h2>
           <p className="text-gray-600">
             {user.lastAddress.street}, {user.lastAddress.city}
@@ -102,20 +107,20 @@ const UserProfilePage = () => {
         {/* Orders Table */}
         <div>
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
-            تاريخ الطلبات
+            {t("ordersHistory.title")}
           </h2>
           <div className="overflow-x-auto">
             <table className="min-w-full border border-gray-200 rounded-xl overflow-hidden">
               <thead className="text-start bg-gray-100">
                 <tr>
                   <th className="text-start px-4 py-2 text-sm font-semibold text-gray-600">
-                    رقم الطلب
+                    {t("ordersHistory.orderId")}
                   </th>
                   <th className="text-start px-4 py-2  text-sm font-semibold text-gray-600">
-                    الإجمالي
+                    {t("ordersHistory.total")}
                   </th>
                   <th className="px-4 py-2 text-start text-sm font-semibold text-gray-600">
-                    تاريخ الطلب
+                    {t("ordersHistory.date")}
                   </th>
                 </tr>
               </thead>
@@ -124,7 +129,7 @@ const UserProfilePage = () => {
                   <tr key={order.id} className="border-t">
                     <td className="px-4 py-2 text-gray-700">{order.id}</td>
                     <td className="px-4 py-2 text-gray-700">
-                      {order.total} جنيه
+                      {order.total} {t("currency")}
                     </td>
                     <td className="px-4 py-2 text-gray-700">{order.date}</td>
                   </tr>

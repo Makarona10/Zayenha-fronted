@@ -1,16 +1,24 @@
 // src/middleware.ts
 import createMiddleware from "next-intl/middleware";
 import { locales } from "./i18n";
+import { NextRequest } from "next/server";
 
-export default createMiddleware({
+const intlMiddleware = createMiddleware({
   locales,
   defaultLocale: "en",
   localePrefix: "always",
 });
 
+export default function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  if (pathname.startsWith("/merch")) {
+    return;
+  }
+
+  return intlMiddleware(req);
+}
+
 export const config = {
-  matcher: [
-    // Skip all internal paths (_next, favicon, etc.)
-    "/((?!_next|_vercel|favicon.ico|.*\\..*).*)",
-  ],
+  matcher: ["/((?!_next|_vercel|favicon.ico|.*\\..*).*)"],
 };

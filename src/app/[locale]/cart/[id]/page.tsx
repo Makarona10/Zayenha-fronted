@@ -4,8 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 export default function CartPage() {
+  const t = useTranslations("cartpage"); // <-- use translations
   const router = useRouter();
   const [cart, setCart] = useState([
     {
@@ -14,29 +16,11 @@ export default function CartPage() {
       price: 49.99,
       quantity: 2,
       image:
-        "https://images.unsplash.com/photo-1544207239-b36c85778165?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlJTIwZGVjb3J8ZW58MHx8MHx8fDA%3D",
+        "https://images.unsplash.com/photo-1544207239-b36c85778165?w=500&auto=format&fit=crop&q=60",
       stock: 10,
     },
     {
       id: 2,
-      name: "Minimalist Wall Clock",
-      price: 89.99,
-      quantity: 1,
-      image:
-        "https://images.pexels.com/photos/9876229/pexels-photo-9876229.jpeg",
-      stock: 8,
-    },
-    {
-      id: 3,
-      name: "Elegant Ceramic Vase",
-      price: 49.99,
-      quantity: 2,
-      image:
-        "https://images.unsplash.com/photo-1544207239-b36c85778165?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlJTIwZGVjb3J8ZW58MHx8MHx8fDA%3D",
-      stock: 10,
-    },
-    {
-      id: 4,
       name: "Minimalist Wall Clock",
       price: 89.99,
       quantity: 1,
@@ -71,12 +55,10 @@ export default function CartPage() {
 
   return (
     <div className="mt-8 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
-      <h1 className="text-3xl font-bold text-primary-700 mb-8">
-        عربة الشراء الخاصة بك
-      </h1>
+      <h1 className="text-3xl font-bold text-primary-700 mb-8">{t("title")}</h1>
 
       {cart.length === 0 ? (
-        <p className="text-gray-500 text-lg">عربة الشراء فارغة</p>
+        <p className="text-gray-500 text-lg">{t("empty")}</p>
       ) : (
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Cart Items */}
@@ -102,7 +84,7 @@ export default function CartPage() {
                     {item.name}
                   </h2>
                   <p className="text-primary-600 font-medium">
-                    {item.price.toFixed(2)} جنيه
+                    {item.price.toFixed(2)}
                   </p>
                 </div>
 
@@ -141,33 +123,25 @@ export default function CartPage() {
           {/* Summary */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 h-fit">
             <h2 className="text-xl font-bold mb-4 text-primary-700">
-              الطلب الخاص بك
+              {t("yourorder")}
             </h2>
             <div className="space-y-3 text-gray-700">
               <div className="flex justify-between">
-                <span>إجمالي المبلغ:</span>
-                <span> {subtotal.toFixed(2)} جنيه </span>
+                <span>{t("total")}</span>
+                <span>{subtotal.toFixed(2)}</span>
               </div>
-              {/* <div className="flex justify-between"> */}
-              {/*   <span>Shipping</span> */}
-              {/*   <span>${shipping.toFixed(2)}</span> */}
-              {/* </div> */}
-              {/* <div className="border-t pt-3 flex justify-between font-bold text-lg text-primary-700"> */}
-              {/*   <span>Total</span> */}
-              {/*   <span>${total.toFixed(2)}</span> */}
-              {/* </div> */}
             </div>
             <button
               onClick={() => router.push("/checkout/card")}
               className="w-full mt-6 bg-primary-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-primary-600 transition"
             >
-              إدفع أونلاين
+              {t("pay.online")}
             </button>
             <button
               onClick={() => router.push("/checkout/cash-on-delivery")}
               className="w-full mt-2 bg-gray-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-gray-600 transition"
             >
-              إدفع نقدي عند الاستلام
+              {t("pay.cash")}
             </button>
           </div>
         </div>
