@@ -38,7 +38,7 @@ const ProductCard = (product: Product) => {
               <FaHeart className="w-5 h-5" />
             </button>
           </div>
-          <Link href="">
+          <Link href="/product/1">
             <Image
               src={product.main_image}
               alt={product.name}
