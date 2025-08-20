@@ -31,7 +31,7 @@ export default function PaginationBar({ total = 10 }: Props) {
   };
 
   return (
-    <div dir="ltr" className="flex gap-6 items-center justify-center py-6">
+    <div dir="ltr" className="flex gap-3 items-center justify-center py-6">
       {/* Go -5 pages */}
       <div className="flex flex-col items-center">
         <button
@@ -40,10 +40,10 @@ export default function PaginationBar({ total = 10 }: Props) {
           className="p-3 rounded-full bg-primary-400 text-white shadow-md
                      hover:scale-110 hover:shadow-lg transition-all duration-300
                      disabled:opacity-50 disabled:cursor-not-allowed"
+          title={t("prev5")}
         >
           <FaAngleDoubleLeft className="w-5 h-5" />
         </button>
-        <span className="text-xs mt-1">{t("prev5")}</span>
       </div>
 
       {/* Go -1 page */}
@@ -54,17 +54,14 @@ export default function PaginationBar({ total = 10 }: Props) {
           className="p-3 rounded-full bg-primary-400 text-white shadow-md
                      hover:scale-110 hover:shadow-lg transition-all duration-300
                      disabled:opacity-50 disabled:cursor-not-allowed"
+          title={t("prev1")}
         >
           <FaArrowLeft className="w-4 h-4" />
         </button>
-        <span className="text-xs mt-1">{t("prev1")}</span>
       </div>
 
       {/* Current page */}
-      <span
-        className="px-6 py-2 bg-primary-400 text-white rounded-lg shadow-md font-medium 
-                   animate-pulse"
-      >
+      <span className="px-6 py-2 bg-primary-400 text-white rounded-lg shadow-md font-medium">
         {t("page")} {page}
       </span>
 
@@ -76,10 +73,10 @@ export default function PaginationBar({ total = 10 }: Props) {
           className="p-3 rounded-full bg-primary-400 text-white shadow-md
                      hover:scale-110 hover:shadow-lg transition-all duration-300
                      disabled:opacity-50 disabled:cursor-not-allowed"
+          title={t("next1")}
         >
           <FaArrowRight className="w-4 h-4" />
         </button>
-        <span className="text-xs mt-1">{t("next1")}</span>
       </div>
 
       {/* Go +5 pages */}
@@ -90,10 +87,10 @@ export default function PaginationBar({ total = 10 }: Props) {
           className="p-3 rounded-full bg-primary-400 text-white shadow-md
                      hover:scale-110 hover:shadow-lg transition-all duration-300
                      disabled:opacity-50 disabled:cursor-not-allowed"
+          title={t("next5")}
         >
           <FaAngleDoubleRight className="w-5 h-5" />
         </button>
-        <span className="text-xs mt-1">{t("next5")}</span>
       </div>
     </div>
   );

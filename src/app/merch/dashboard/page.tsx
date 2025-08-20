@@ -5,7 +5,6 @@ import {
   FaChartLine,
   FaCalendarAlt,
   FaPlusCircle,
-  FaEdit,
   FaBoxes,
 } from "react-icons/fa";
 
@@ -28,12 +27,6 @@ export default function MerchantDashboard() {
       description: "List a new product for sale.",
       icon: <FaPlusCircle className="text-primary-400 text-3xl" />,
       link: "/merch/add-product",
-    },
-    {
-      title: "Modify Product",
-      description: "Edit an existing product’s details.",
-      icon: <FaEdit className="text-primary-400 text-3xl" />,
-      link: "/merch/edit-product",
     },
     {
       title: "List Inventory",

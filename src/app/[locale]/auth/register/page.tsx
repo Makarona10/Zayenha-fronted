@@ -19,16 +19,30 @@ const Register = () => {
               htmlFor="name"
               className="block text-sm font-medium mb-2 text-gray-700"
             >
-              {t("nameLabel")}
+              {t("firstName")}
             </label>
             <input
               type="text"
               id="name"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
-              placeholder={t("namePlaceholder")}
+              placeholder={t("fnamePlaceholder")}
             />
           </div>
 
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium mb-2 text-gray-700"
+            >
+              {t("secondName")}
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 transition"
+              placeholder={t("snamePlaceholder")}
+            />
+          </div>
           {/* Email */}
           <div>
             <label

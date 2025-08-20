@@ -228,8 +228,10 @@
   },
   "Register": {
     "title": "Create an Account",
-    "nameLabel": "Full Name",
-    "namePlaceholder": "Enter your full name",
+    "firstName": "First Name",
+    "secondName": "Second Name",
+    "fnamePlaceholder": "Enter your first name",
+    "snamePlaceholder": "Enter your second name",
     "emailLabel": "Email",
     "emailPlaceholder": "Enter your email",
     "passwordLabel": "Password",

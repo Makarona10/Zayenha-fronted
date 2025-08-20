@@ -234,8 +234,10 @@
   },
   "Register": {
     "title": "إنشاء حساب",
-    "nameLabel": "الاسم الكامل",
-    "namePlaceholder": "أدخل اسمك الكامل",
+    "firstName": "الاسم الأول",
+    "secondName": "الاسم الثاني",
+    "fnamePlaceholder": "أدخل اسمك الأول",
+    "snamePlaceholder": "أدخل اسمك الثاني",
     "emailLabel": "البريد الإلكتروني",
     "emailPlaceholder": "أدخل بريدك الإلكتروني",
     "passwordLabel": "كلمة المرور",

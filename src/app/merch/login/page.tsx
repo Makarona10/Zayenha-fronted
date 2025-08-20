@@ -13,7 +13,6 @@ export default function MerchantLoginPage() {
 
     // Example login logic
     if (email && password) {
-      console.log("Merchant Login:", { email, password });
       router.push("/merchant/dashboard"); // Redirect after login
     }
   };

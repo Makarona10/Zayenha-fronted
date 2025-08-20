@@ -95,7 +95,7 @@ const ListPage = () => {
               q_param="order"
             />
           </Suspense>
-          <button className="bg-primary-500 px-4 py-2 text-white h-fit rounded-full">
+          <button className="text-sm bg-primary-500 px-4 py-2 text-white h-fit rounded-full">
             {t("searchButton")}
           </button>
         </div>

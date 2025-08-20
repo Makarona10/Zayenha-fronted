@@ -40,11 +40,11 @@ function ProductInventory({
         <div className="flex items-center justify-between mt-2">
           <div className="flex items-baseline gap-2">
             <span className="text-primary-400 font-bold text-lg">
-              ${offerPrice ?? price}
+              {offerPrice ?? price} EGP
             </span>
             {offerPrice && (
               <span className="text-gray-500 line-through text-sm">
-                ${price}
+                {price} EGP
               </span>
             )}
           </div>
