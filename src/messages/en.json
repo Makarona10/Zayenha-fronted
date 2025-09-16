@@ -109,6 +109,8 @@
     "shippingInfo": "Shipping Information",
     "fullName": "Full Name",
     "phoneNumber": "Mobile Number",
+    "choosePrevious": "Choose previous address",
+    "addNew": "Add a new address",
     "email": "Email (Optional)",
     "city": "City",
     "district": "District / Area",
@@ -186,7 +188,7 @@
     "searchButton": "Search"
   },
   "productCard": {
-    "addToCart": "Add to Cart",
+    "addToCart": "Add To Cart",
     "viewProduct": "View Product"
   },
   "pagination": {
@@ -224,7 +226,8 @@
     "passwordPlaceholder": "Enter your password",
     "submitButton": "Sign In",
     "noAccount": "Don't have an account?",
-    "createAccount": "Create one"
+    "createAccount": "Create one",
+    "forgotPassword": "Forgot Password?"
   },
   "Register": {
     "title": "Create an Account",
@@ -241,5 +244,36 @@
     "submitButton": "Register",
     "haveAccount": "Already have an account?",
     "login": "Login"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "example@email.com",
+    "submitButton": "send reset code",
+    "confirmationMessage": "📧 If the email exists in our system, you will receive a reset link."
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "resetCode": "Reset Code",
+    "resetCodePlaceholder": "Enter the 6-digit reset code",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter new password",
+    "confirmPassword": "Confirm New Password",
+    "confirmPasswordPlaceholder": "Confirm new password",
+    "submit": "Reset Password",
+    "passwordsNotMatch": "Passwords do not match!",
+    "success": "Password reset successful!"
+  },
+  "updatePassword": {
+    "title": "Update Password",
+    "currentPassword": "Current Password",
+    "currentPasswordPlaceholder": "Enter your current password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter a new password",
+    "confirmNewPassword": "Confirm New Password",
+    "confirmNewPasswordPlaceholder": "Re-enter new password",
+    "submit": "Update Password",
+    "passwordsNotMatch": "Passwords do not match",
+    "success": "Your password has been updated successfully!"
   }
 }

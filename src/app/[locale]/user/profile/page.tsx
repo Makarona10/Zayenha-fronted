@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface Order {
   id: string;
@@ -62,9 +63,11 @@ const UserProfilePage = () => {
             <p className="text-gray-500">{user.email}</p>
           </div>
           <div className="mt-4 sm:mt-0">
-            <button className="px-4 py-2 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition">
-              {t("editProfile")}
-            </button>
+            <Link href="profile/modify">
+              <button className="px-4 py-2 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition">
+                {t("editProfile")}
+              </button>
+            </Link>
           </div>
         </div>
 

@@ -5,7 +5,7 @@ interface Props {
 const ProductCardSkeleton = ({ count }: Props) => {
   return (
     <div
-      className={`w-full grid 2xl:grid-cols-5 2xl:gap-x-8 xl:grid-cols-4 xl:gap-x-7 lg:grid-cols-3 lg:gap-x-5 md:grid-cols-2
+      className={`w-full grid 2xl:grid-cols-4 2xl:gap-x-8 xl:grid-cols-4 xl:gap-x-7 lg:grid-cols-3 lg:gap-x-5 md:grid-cols-2
       md:gap-x-4 grid-cols-2 gap-x-5 md:gap-y-16 gap-y-8 items-center`}
     >
       {Array.from({ length: count }).map((_, i) => (

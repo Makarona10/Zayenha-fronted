@@ -15,10 +15,6 @@ interface Product {
 type Props = { products: Product[]; api: string; load_more: boolean };
 
 const ProductList = async ({ products, api = "" }: Props) => {
-  if (!products) {
-    return <>A SPINNER TO BE PLACED HERE</>;
-  }
-
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const result = res.json();
 

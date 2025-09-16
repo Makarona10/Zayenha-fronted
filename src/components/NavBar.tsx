@@ -57,7 +57,7 @@ const NavBar = () => {
         </button>
         <div
           id="sbar"
-          className="flex items-center bg-white shadow-md p-3 rounded-lg gap-3 z-30 transform duration-300 absolute top-16 -translate-y-52 w-full"
+          className="flex items-center bg-white shadow-md p-1 rounded-full gap-3 z-30 transform duration-300 absolute top-16 -translate-y-52 w-full"
         >
           <SearchBar />
           <button
@@ -65,7 +65,7 @@ const NavBar = () => {
               const bar = document.getElementById("sbar");
               if (bar) bar.style.transform = "translateY(-10rem)";
             }}
-            className="py-2 px-4 text-sm bg-red-500 rounded-full text-white"
+            className="py-1 px-3 text-base bg-red-500 rounded-full text-white"
           >
             x
           </button>

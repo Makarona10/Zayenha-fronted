@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 import { useTranslations } from "next-intl";
+import NProgress from "nprogress";
 
 export default function CartPage() {
-  const t = useTranslations("cartpage"); // <-- use translations
+  const t = useTranslations("cartpage");
   const router = useRouter();
   const [cart, setCart] = useState([
     {
@@ -50,6 +51,12 @@ export default function CartPage() {
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
+
+  const navigateWithLoader = (path: string) => {
+    NProgress.start();
+    router.push(path);
+  };
+
   const shipping = cart.length > 0 ? 15 : 0;
   const total = subtotal + shipping;
 
@@ -132,13 +139,13 @@ export default function CartPage() {
               </div>
             </div>
             <button
-              onClick={() => router.push("/checkout/card")}
+              onClick={() => navigateWithLoader("/checkout/card")}
               className="w-full mt-6 bg-primary-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-primary-600 transition"
             >
               {t("pay.online")}
             </button>
             <button
-              onClick={() => router.push("/checkout/cash-on-delivery")}
+              onClick={() => navigateWithLoader("/checkout/cash-on-delivery")}
               className="w-full mt-2 bg-gray-500 text-white py-3 rounded-xl font-semibold shadow hover:bg-gray-600 transition"
             >
               {t("pay.cash")}

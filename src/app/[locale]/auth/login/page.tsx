@@ -55,7 +55,7 @@ const Login = () => {
         </form>
 
         {/* Optional extra links */}
-        <div className="mt-6 text-center">
+        <div className="flex flex-col items-center mt-6 text-center gap-2">
           <p className="text-sm text-gray-500">
             {t("noAccount")}{" "}
             <a
@@ -63,6 +63,14 @@ const Login = () => {
               className="text-primary-500 font-medium hover:underline"
             >
               {t("createAccount")}
+            </a>
+          </p>
+          <p className="text-sm text-gray-500">
+            <a
+              href="/auth/forgot-password"
+              className="text-red-500 font-medium hover:underline"
+            >
+              {t("forgotPassword")}
             </a>
           </p>
         </div>

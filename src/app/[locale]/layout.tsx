@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Noto_Kufi_Arabic, Nunito, Raleway } from "next/font/google";
+import { Noto_Kufi_Arabic, Nunito } from "next/font/google";
 import "../globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/common/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import NextTopLoader from "nextjs-toploader";
 
 const notoKufi = Noto_Kufi_Arabic({
   subsets: ["arabic"],
@@ -40,6 +41,7 @@ export default async function RootLayout({
           className={locale === "ar" ? notoKufi.className : enfont.className}
           style={{ fontSize: locale === "en" ? "17px" : "" }}
         >
+          <NextTopLoader color="#3cbdae" />
           <NavBar />
           {children}
           <Footer />

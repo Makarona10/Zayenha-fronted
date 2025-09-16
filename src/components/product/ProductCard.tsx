@@ -44,7 +44,7 @@ const ProductCard = (product: Product) => {
               alt={product.name}
               fill
               sizes=""
-              className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity duration-300 ease-in-out"
+              className="absolute object-cover rounded-md z-10 hover:opacity-0 hover:scale-110 transition-all duration-700 ease-in-out"
             />
             <Image
               src={product.second_image}
@@ -77,8 +77,8 @@ const ProductCard = (product: Product) => {
             )}
           </div>
 
-          <div className="flex flex-nowrap justify-between w-full font-bold">
-            <button className="md:w-max flex flex-nowrap items-center gap-2 w-full md:py-2 md:px-4 p-2 md:text-xs text-[10px] rounded-full bg-primary-500 text-white transition-colors duration-300">
+          <div className="flex flex-nowrap gap-2 justify-between w-full font-bold">
+            <button className="md:w-max flex flex-nowrap md:justify-start justify-center items-center gap-2 w-full md:py-2 md:px-4 p-2 md:text-xs text-[10px] rounded-full bg-primary-500 text-white transition-colors duration-300">
               {t("addToCart")}
               <Image
                 src="/cart.png"

@@ -131,5 +131,28 @@ export const products: Array<Product> = [
     isFavorite: false,
     id: "10",
   },
-  // ... and so on for all remaining elements
+  {
+    main_image:
+      "https://images.pexels.com/photos/12956902/pexels-photo-12956902.jpeg",
+    second_image:
+      "https://images.pexels.com/photos/604575/pexels-photo-604575.jpeg",
+    name: "إطار صورة",
+    description: "إطار خشبي أنيق لعرض صورك الجميلة.",
+    price: 70.0,
+    offer_price: 55.0,
+    isFavorite: true,
+    id: "11",
+  },
+  {
+    main_image:
+      "https://images.pexels.com/photos/7193632/pexels-photo-7193632.jpeg",
+    second_image:
+      "https://images.pexels.com/photos/604575/pexels-photo-604575.jpeg",
+    name: "سجادة صغيرة",
+    description: "سجادة ناعمة تضيف دفئًا لأرضية غرفتك.",
+    price: 300.0,
+    offer_price: 250.0,
+    isFavorite: false,
+    id: "12",
+  },
 ];

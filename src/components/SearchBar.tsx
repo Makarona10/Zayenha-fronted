@@ -14,7 +14,7 @@ const SearchBar = () => {
     const name = formData.get("name") as string;
     if (name) {
       const searchUrl = `/list?search=${encodeURIComponent(name)}`;
-      router.push(searchUrl);
+      window.location.assign(searchUrl);
     }
   };
 
