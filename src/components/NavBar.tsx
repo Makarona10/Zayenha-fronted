@@ -6,7 +6,7 @@ import Image from "next/image";
 import SearchBar from "./SearchBar";
 import NavIcons from "./NavIcons";
 import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
+import LanguageSwitcher from "./navbar/LanguageSwitcher";
 
 interface LinkType {
   name: string;
@@ -15,23 +15,13 @@ interface LinkType {
 
 const NavBar = () => {
   const t = useTranslations("Navbar");
-  const router = useRouter();
-  const pathname = usePathname();
   const locale = useLocale();
-
   const links: LinkType[] = [
     { name: t("home"), ref: "/" + locale },
     { name: t("recent"), ref: `/${locale}/products/recents` },
     { name: t("offers"), ref: `/${locale}/products/offered` },
     { name: t("contact"), ref: `/${locale}/contact-us` },
   ];
-
-  const handleLocaleChange = (locale: "ar" | "en") => {
-    // Replace first path segment with new locale
-    const segments = pathname.split("/");
-    segments[1] = locale;
-    router.push(segments.join("/"));
-  };
 
   return (
     <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 font-medium bg-white shadow-sm flex items-center gap-16">
@@ -70,6 +60,7 @@ const NavBar = () => {
             x
           </button>
         </div>
+        <LanguageSwitcher />
         <Menu />
       </div>
 
@@ -103,14 +94,7 @@ const NavBar = () => {
           <NavIcons />
 
           {/* Language Selector */}
-          <select
-            className="text-base bg-primary-100 text-white rounded-lg px-2 cursor-pointer outline-none"
-            onChange={(e) => handleLocaleChange(e.target.value as "ar" | "en")}
-            defaultValue={pathname.split("/")[1] || "ar"}
-          >
-            <option value="ar">🇪🇬</option>
-            <option value="en">🇺🇸</option>
-          </select>
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

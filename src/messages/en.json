@@ -25,13 +25,13 @@
   "prod_page": {
     "color": "color",
     "size": "size",
-    "quantity": "quantity",
-    "about": "about product",
+    "quantity": "Quantity",
+    "about": "About Product",
     "return_policy": {
       "head": "return policy",
       "content": "Modern canvas wall art for living room, waterproof, non-fading, durable and dustproof, fully compliant with standards. Modern canvas wall art for living room, waterproof, non-fading, durable and dustproof, fully compliant with standards. Modern canvas wall art for living room, waterproof, non-fading, durable and dustproof, fully compliant with standards."
     },
-    "add": "add to cart",
+    "add": "Add To Cart",
     "only": "only",
     "pl": "pieces left",
     "dm": "Don't miss"
@@ -92,7 +92,7 @@
     },
     "checkout": "Checkout",
     "total": "Total",
-    "note": "Orders are usually delivered within 5-7 business days.",
+    "note": "Orders are usually delivered within 7-10 working days.",
     "empty": "No items added yet."
   },
   "cartpage": {
@@ -200,7 +200,7 @@
   },
   "profilepage": {
     "loading": "Loading profile...",
-    "editProfile": "Edit Profile",
+    "editProfile": "Update password",
     "stats": {
       "ordersCount": "Orders Count",
       "totalAmount": "Total Orders Price",
@@ -275,5 +275,10 @@
     "submit": "Update Password",
     "passwordsNotMatch": "Passwords do not match",
     "success": "Your password has been updated successfully!"
+  },
+  "language": {
+    "select": "Select Language",
+    "arabic": "Arabic",
+    "english": "English"
   }
 }

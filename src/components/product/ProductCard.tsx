@@ -78,7 +78,7 @@ const ProductCard = (product: Product) => {
           </div>
 
           <div className="flex flex-nowrap gap-2 justify-between w-full font-bold">
-            <button className="md:w-max flex flex-nowrap md:justify-start justify-center items-center gap-2 w-full md:py-2 md:px-4 p-2 md:text-xs text-[10px] rounded-full bg-primary-500 text-white transition-colors duration-300">
+            <button className="md:w-7/12 flex flex-nowrap md:justify-start justify-center items-center gap-2 w-full md:py-2 md:px-4 p-2 md:text-xs text-[10px] rounded-full bg-primary-500 text-white transition-colors duration-300">
               {t("addToCart")}
               <Image
                 src="/cart.png"
@@ -88,7 +88,7 @@ const ProductCard = (product: Product) => {
                 className="inline-block mr-2 filter brightness-0 invert duration-300 transform transition-all"
               />
             </button>
-            <button className="md:flex hidden px-4 py-2 md:text-xs text-[10px]  rounded-full bg-rose-500 text-white transition-colors duration-300">
+            <button className="md:flex line-clamp-1 hidden px-4 py-3 md:text-xs text-[10px]  rounded-full bg-rose-500 text-white transition-colors duration-300">
               {t("viewProduct")}
             </button>
           </div>

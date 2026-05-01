@@ -4,7 +4,7 @@ const Login = () => {
   const t = useTranslations("Login");
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-gradient-to-br from-primary-100 via-primary-200 to-primary-400">
+    <div className="flex w-full h-screen items-center justify-center bg-gradient-to-br from-primary-100 via-primary-200 to-primary-400 ">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-2xl">
         {/* Title */}
         <h2 className="text-3xl font-extrabold text-center mb-8 text-primary-500">

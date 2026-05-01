@@ -45,7 +45,7 @@ const ListPage = () => {
     }));
 
   return (
-    <div className="relative">
+    <div className="relative pb-20">
       {/* Campaign */}
       <div className="bg-primary-100 flex md:flex-row flex-col justify-between md:h-[320px] h-[640px]">
         <div className="md:w-5/12 w-full md:h-full h-1/2 flex flex-col items-center justify-center gap-8 p-8 bg-gradient-to-r from-primary-100 to-primary-100/50">

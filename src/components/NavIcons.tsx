@@ -1,16 +1,18 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import CartModal from "./CartModal";
 import { useTranslations } from "next-intl";
 
 const NavIcons = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const profileRef = useRef<HTMLDivElement>(null);
   const cartRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("Navbar");
+  const locale = pathname.split("/")[1] || "en";
 
   const isLoggedIn = true;
 
@@ -81,7 +83,7 @@ const NavIcons = () => {
           />
           <div
             ref={profileRef}
-            className="absolute hidden top-14 md:right-0 -right-10 bg-white rounded-lg p-4 w-48 z-20 shadow-[0_8px_10px_0px_rgba(0,0,0,0.1)]"
+            className={`absolute hidden top-14 md:${locale === "en" ? "right-0" : "left-0"} -right-10 bg-white rounded-lg p-4 w-48 z-20 shadow-[0_8px_10px_0px_rgba(0,0,0,0.1)]`}
           >
             <ul className="space-y-2">
               <li>

@@ -15,8 +15,8 @@ interface Product {
 type Props = { products: Product[]; api: string; load_more: boolean };
 
 const ProductList = async ({ products, api = "" }: Props) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const result = res.json();
+  // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  // const result = res.json();
 
   return (
     <div

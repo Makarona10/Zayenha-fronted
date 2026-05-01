@@ -3,13 +3,18 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const CartModal = () => {
   const cartItems = false;
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] || "en";
   const t = useTranslations("cartmodal");
 
   return (
-    <div className="w-max absolute p-4 bg-white shadow-[0_8px_10px_0px_rgba(0,0,0,0.1)] rounded-md md:left-0 -left-16 top-16 flex flex-col gap-6 z-20">
+    <div
+      className={`w-max absolute p-4 bg-white shadow-[0_8px_10px_0px_rgba(0,0,0,0.1)] rounded-md ${locale === "en" ? "md:right-0" : "md:left-0"} top-16 flex flex-col gap-6 z-20`}
+    >
       {cartItems ? (
         <div className="flex flex-col gap-4">
           <h2 className="text-lg font-semibold">{t("head")}</h2>

@@ -38,12 +38,14 @@ export default async function RootLayout({
     <NextIntlClientProvider locale={locale} messages={messages}>
       <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
         <body
-          className={locale === "ar" ? notoKufi.className : enfont.className}
+          className={`min-h-screen flex flex-col ${
+            locale === "ar" ? notoKufi.className : enfont.className
+          }`}
           style={{ fontSize: locale === "en" ? "17px" : "" }}
         >
           <NextTopLoader color="#3cbdae" />
           <NavBar />
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
         </body>
       </html>
