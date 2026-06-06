@@ -1,8 +1,9 @@
 {
   "Home": {
-    "featured": "",
-    "categories": "",
-    "recent": ""
+    "featured": "Featured",
+    "categories": "Categories",
+    "recent": "Just Arrived",
+    "bestsellers": "Best Sellers"
   },
   "Navbar": {
     "home": "Home",

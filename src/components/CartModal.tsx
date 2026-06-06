@@ -90,7 +90,7 @@ const CartModal = () => {
             </div>
             <p className="text-gray-500 text-xs mt-2">{t("note")}</p>
             <div className="flex gap-4 text-sm">
-              <Link href="/cart/userid" className="w-full">
+              <Link href={`/${locale}/cart/userid`} className="w-full">
                 <button className="w-full bg-primary-400 text-white py-2 rounded-md hover:bg-primary-500 transition duration-200">
                   {t("checkout")}
                 </button>

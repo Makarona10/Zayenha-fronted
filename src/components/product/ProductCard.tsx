@@ -5,15 +5,25 @@ import { FaHeart } from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl";
 import { currency } from "@/currency";
 
-interface Product {
-  id: string;
-  main_image: string;
-  second_image: string;
+export interface ProductTranslation {
+  productId: number;
   name: string;
+  shortDescription?: string;
   description?: string;
-  price?: number;
-  offer_price?: number;
-  isFavorite?: boolean;
+}
+
+export interface ProductImage {
+  image: string;
+}
+
+export interface Product {
+  id: number;
+  price: string;
+  offerPrice: string;
+  mainImage: string;
+  images: ProductImage[];
+  translations: ProductTranslation[];
+  isFavorite: boolean;
 }
 
 const ProductCard = (product: Product) => {
@@ -21,6 +31,26 @@ const ProductCard = (product: Product) => {
   const locale = useLocale();
 
   const handle_favourite = () => {};
+
+  const translation = product.translations?.[0] || {};
+  const productName = translation.name || "";
+  const productDescription =
+    translation.shortDescription || translation.description || "";
+
+  const secondaryImage = product.images?.[0]?.image || product.mainImage;
+
+  const numOfferPrice = Number(product.offerPrice);
+  const numPrice = Number(product.price);
+
+  const displayPrice =
+    numOfferPrice && numOfferPrice > 0 ? numOfferPrice : numPrice;
+  const hasDiscount =
+    numOfferPrice && numOfferPrice > 0 && numPrice && numPrice > numOfferPrice;
+
+  const serverUrl =
+    process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
+  const mainImgSrc = `${serverUrl}/${product.mainImage}`;
+  const secondImgSrc = `${serverUrl}/${secondaryImage}`;
 
   return (
     <div className="w-full bg-white rounded-lg transform transition-transform">
@@ -38,41 +68,39 @@ const ProductCard = (product: Product) => {
               <FaHeart className="w-5 h-5" />
             </button>
           </div>
-          <Link href="/product/1">
+          <Link href={`/product/${product.id}`}>
             <Image
-              src={product.main_image}
-              alt={product.name}
+              src={mainImgSrc}
+              alt={productName}
               fill
-              sizes=""
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="absolute object-cover rounded-md z-10 hover:opacity-0 hover:scale-110 transition-all duration-700 ease-in-out"
             />
             <Image
-              src={product.second_image}
-              alt={product.name}
+              src={secondImgSrc}
+              alt={productName}
               fill
-              sizes=""
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="absolute object-cover rounded-md"
             />
           </Link>
         </div>
 
         <div className="pt-2 gap-y-2 flex flex-col items-start pb-4">
-          <h2 className="sm:text-lg text-base font-semibold text-gray-800">
-            {product.name}
+          <h2 className="sm:text-lg text-base font-semibold text-gray-800 line-clamp-1">
+            {productName}
           </h2>
           <p className="line-clamp-2 tracking-tighter md:text-xs text-[11px] text-gray-600 h-10">
-            {product.description}
+            {productDescription}
           </p>
 
           <div className="flex items-center justify-between w-full">
             <span className="md:text-sm text-xs font-bold text-gray-900">
-              {product.offer_price || product.price}{" "}
-              {currency[locale as keyof typeof currency]}
+              {displayPrice} {currency[locale as keyof typeof currency]}
             </span>
-            {product.offer_price && product.price && (
+            {hasDiscount && (
               <span className="line-through md:text-sm text-xs text-gray-500 px-2">
-                {product.price}
-                {currency[locale as keyof typeof currency]}
+                {numPrice} {currency[locale as keyof typeof currency]}
               </span>
             )}
           </div>
@@ -88,9 +116,12 @@ const ProductCard = (product: Product) => {
                 className="inline-block mr-2 filter brightness-0 invert duration-300 transform transition-all"
               />
             </button>
-            <button className="md:flex line-clamp-1 hidden px-4 py-3 md:text-xs text-[10px]  rounded-full bg-rose-500 text-white transition-colors duration-300">
+            <Link
+              href={`/product/${product.id}`}
+              className="md:flex line-clamp-1 hidden px-4 py-3 md:text-xs text-[10px] rounded-full bg-rose-500 text-white transition-colors duration-300 items-center justify-center text-center"
+            >
               {t("viewProduct")}
-            </button>
+            </Link>
           </div>
         </div>
       </div>

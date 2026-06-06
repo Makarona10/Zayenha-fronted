@@ -1,8 +1,9 @@
 {
   "Home": {
     "featured": "المنتجات المميزة",
-    "categories": "",
-    "recent": ""
+    "categories": "التصنيفات",
+    "recent": "آخر المنتجات",
+    "bestsellers": "الأكثر مبيعا"
   },
   "Navbar": {
     "home": "الرئيسية",
